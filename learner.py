@@ -1,4 +1,3 @@
-from duckduckgo_search import ddg_images
 from fastai.vision.all import *
 
 path = Path('training_set')
@@ -13,4 +12,6 @@ dls = DataBlock(
 
 # print(dls.show_batch(max_n=6))
 learn = vision_learner(dls, resnet18, metrics=error_rate)
-learn.fine_tune(5)
+learn.fine_tune(300)
+
+learn.export()
